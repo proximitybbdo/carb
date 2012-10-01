@@ -1,12 +1,17 @@
-Gem::Specification.new do |s|
-  s.name        = 'octaplus'
-  s.version     = '0.0.1'
-  s.date        = '2012-10-01'
-  s.summary     = "Octaplus boost start"
-  s.description = "Tool to help the setup of the Proximity BBDO Octaplus framework"
-  s.authors     = ["Jeroen Bourgois"]
-  s.email       = 'info@jeroenbourgois.be'
-  s.files       = ["lib/octaplus.rb"]
-  s.homepage    =
-    'http://rubygems.org/gems/octaplus'
+# -*- encoding: utf-8 -*-
+require File.expand_path('../lib/octaplus/version', __FILE__)
+
+Gem::Specification.new do |gem|
+  gem.authors       = ["Jeroen Bourgois"]
+  gem.email         = ["jeroenbourgois@gmail.com"]
+  gem.description   = %q{Boost the start of a Proximity BBDO Octaplus framework}
+  gem.summary       = %q{Boost the start of a Proximity BBDO Octaplus framework}
+  gem.homepage      = ""
+
+  gem.files         = `git ls-files`.split($\)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.name          = "octaplus"
+  gem.require_paths = ["lib"]
+  gem.version       = Octaplus::VERSION
 end

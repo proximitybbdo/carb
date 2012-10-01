@@ -1,5 +1,5 @@
-class Octaplus
-  def self.hi
-    puts "Hello world!"
-  end
+require "octaplus/version"
+
+module Octaplus
+  # Your code goes here...
 end

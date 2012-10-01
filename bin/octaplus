@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 
-$:.unshift File.expand_path('../../lib', __FILE__)
 
-require 'rubygems' unless defined? Gem
+ok = File.expand_path(File.join(*%w[lib]), File.dirname(__FILE__))
+
+require 'octaplus'
 require 'octaplus/cli'
 
 Octaplus::CLI.start

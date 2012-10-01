@@ -1,3 +1,4 @@
+require 'rubygems'
 require "octaplus/version"
 
 module Octaplus

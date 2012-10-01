@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "octaplus"
   gem.require_paths = ["lib"]
   gem.version       = Octaplus::VERSION
+  
+  gem.add_development_dependency "rspec", "~> 2.6"
 end

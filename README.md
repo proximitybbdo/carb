@@ -1,12 +1,19 @@
-# Octaplus
+# Carb
 
-TODO: Write a gem description
+Tool to help us set up our web apps faster. It can merge different subprojects
+and deliver a folder ready to start developing.
+
+Available setups are:
+
+- on-fire: [octaplus](https://github.com/proximitybbdo/octaplus) topped with [bearded-octo](https://github.com/proximitybbdo/bearded-octo) and [moreorless](https://github.com/rob-bar/moreorless) (default)
+- octaplus: octaplus installation
+- bearded-octo: frontend framework topped with moreorless
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'octaplus'
+    gem 'carb'
 
 And then execute:
 
@@ -14,16 +21,16 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install octaplus
+    $ gem install carb
 
 ## Usage
 
-TODO: Write usage instructions here
+To install a specific type, just run the command
 
-## Contributing
+    $ carb create TYPE TARGET_FOLDER
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+The possible types are
+
+- on-fire: octaplus topped with bearded-octo and moreorless (default)
+- octaplus: a fuelphp installation
+- bearded-octo: frontend framework topped with moreorless

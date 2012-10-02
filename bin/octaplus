@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-
-ok = File.expand_path(File.join(*%w[lib]), File.dirname(__FILE__))
-
-require 'octaplus'
-require 'octaplus/cli'
-
-Octaplus::CLI.start

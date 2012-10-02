@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'carb'
+require 'carb/cli'
+
+Carb::CLI.start

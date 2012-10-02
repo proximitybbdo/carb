@@ -1,7 +1,7 @@
 require 'thor'
-require "octaplus"
+require "carb"
 
-module Octaplus
+module Carb
   class CLI < Thor
     desc "init PROJECT", "Creates a new Octaplus project, bare"
     def init(project)

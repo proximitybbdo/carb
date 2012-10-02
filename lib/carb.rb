@@ -1,6 +1,8 @@
 require 'rubygems'
-require "octaplus/version"
+require 'carb/version'
+require 'carb/cli'
+# require 'carb/controller'
 
-module Octaplus
+module Carb
   # Your code goes here...
 end

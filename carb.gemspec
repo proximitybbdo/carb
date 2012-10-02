@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/octaplus/version', __FILE__)
+require File.expand_path('../lib/carb/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Jeroen Bourgois"]
@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "octaplus"
   gem.require_paths = ["lib"]
-  gem.version       = Octaplus::VERSION
+  gem.version       = Carb::VERSION
   
   gem.add_dependency "thor"
 end

@@ -2,9 +2,6 @@
 
 $:.unshift File.dirname(__FILE__) + '/../lib'
 
-# $:.push File.expand_path("../lib", __FILE__)
-
-
 require 'rubygems'
 require 'trollop'
 require 'carb'

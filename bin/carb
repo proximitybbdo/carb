@@ -7,6 +7,6 @@ $:.unshift File.dirname(__FILE__) + '/../lib'
 
 require 'rubygems'
 require 'trollop'
-require 'carb/cli'
+require 'carb'
 
 Carb::CLI.start

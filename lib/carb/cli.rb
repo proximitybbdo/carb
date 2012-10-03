@@ -2,53 +2,56 @@ require 'carb'
 
 module Carb
   class CLI
-    def self.start
-      opts = Trollop::options do
-        opt :monkey, "Use monkey mode"                     # flag --monkey, default false
-        opt :goat, "Use goat mode", :default => true       # flag --goat, default true
+    class << self
+      SUB_COMMANDS = %w(create)
+
+      def start
+        puts 'TODO: implement the target param'.black.reversed
+        puts 'TODO: alter the default view, merge with index.html'.black.reversed
+        puts 'TODO: add check if target exists'.black.reversed
+        puts 'TODO: use FileUtils as much as possible'.black.reversed
+        puts 'TODO: check if repos are there'.black.reversed
+        global_opts = Trollop::options do
+          version = "Carb v#{Carb::VERSION}"
+          banner <<-EOS
+#{version}
+
+Carb gets your fuel flowing. Use it to setup your web dev env.
+
+Usage:
+        carb create <type> <folder>
+
+Where <type> is one of:
+        octaplus      our fuelphp framework, this is as bare as it gets 
+        bearded-octo  our frontend framework together with moreoreless for less/css
+        on-fire       octaplus + bearded-octo = dev on fire!
+
+EOS
+
+          # raise Trollop::HelpNeeded if ARGV.empty? # show help screen
+          stop_on SUB_COMMANDS
+        end
+
+        cmd = ARGV.shift # get the subcommand
+        cmd_opts = case cmd
+           when "create" # parse create options
+             Trollop::options do
+               type = ARGV.shift
+               target = ARGV.shift || "."
+
+               if Carb::PROJECT_TYPES.include?(type)
+                 Carb::Controller.assemble(type, target)
+               else
+                 Trollop::die "wrong type passed. Use one these options: [#{Carb::PROJECT_TYPES.join(' | ')}]."
+               end
+             end
+            when nil
+              Trollop::die "No command specified! Please specify an applicable command"
+           else
+             Trollop::die "Unknown command #{cmd.inspect}"
+           end
+
       end
     end
   end
 end
-
-
-    # register(CreateTask, 'create', 'create TYPE PROJECT', 'Creates a new project of the given TYPE')
-
-
-      # puts "⚡ Preparing your package, hold on ⚡", ""
-
-      # puts project
-
-      ## save pwd
-      #pwd = Dir.pwd
-
-      ## remove previous
-      #%x[rm -rf /tmp/proxdev]
-
-      ## create some collecting folders
-      ## and move to the root of them
-      #%x[mkdir -p /tmp/proxdev/octaplus /tmp/proxdev/bearded /tmp/proxdev/boilerplate]
-
-      #Dir.chdir "/tmp/proxdev"
-
-      ## get the octaplus framework
-      #puts '   ⚡ A bit of Octaplus goodness'
-      #%x[curl -L -s https://github.com/proximitybbdo/octaplus/tarball/master | tar xz --strip 1 -C octaplus]
-
-      ## get the bearded octo
-      #puts '   ⚡ And some bearded-octo seasoning'
-      #%x[curl -L -s https://github.com/proximitybbdo/bearded-octo/tarball/master | tar xz --strip 1 -C bearded]
-
-      ## merge the two into boilerplate goodness
-      #puts '   ⚡ All in the boilerplate'
-      #%x[cp -R octaplus/ boilerplate]
-      #%x[rm -rf -R boilerplate/public/assets]
-      #%x[cp -R bearded/assets boilerplate/public]
-
-      ## copy the bundle to the current working directory
-      #puts "", "⚡⚡⚡ Et voila! All set in the ./#{project} folder ⚡⚡⚡ ", ""
-
-      #%x[mkdir -p #{pwd}/#{project} | cp -R boilerplate #{pwd}/#{project}]
-#     end
-#   end
-# end

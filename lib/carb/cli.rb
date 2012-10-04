@@ -23,8 +23,9 @@ module Carb
     class MainCommand < Clamp::Command
       Logger::log('TODO: alter the default view, merge with index.html', Logger::WARNING)
       Logger::log('TODO: add check if target exists', Logger::WARNING)
-      Logger::log('TODO: use FileUtils as much as possible', Logger::WARNING)
       Logger::log('TODO: check if repos are there', Logger::WARNING)
+
+      puts ''
 
       subcommand "install", "Install a new project", InstallCommand
     end

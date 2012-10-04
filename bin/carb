@@ -4,7 +4,13 @@
 $:.unshift File.dirname(__FILE__) + '/../lib'
 
 require 'rubygems'
-require 'trollop'
-require 'carb'
+require 'thor'
+require 'fileutils'
+
+require 'carb/version'
+require 'carb/config'
+require 'carb/cli'
+require 'carb/controller'
+require 'carb/logger'
 
 Carb::CLI.start

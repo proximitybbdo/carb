@@ -6,11 +6,11 @@ module Carb
       SUB_COMMANDS = %w(create)
 
       def start
-        puts 'TODO: implement the target param'.black.reversed
-        puts 'TODO: alter the default view, merge with index.html'.black.reversed
-        puts 'TODO: add check if target exists'.black.reversed
-        puts 'TODO: use FileUtils as much as possible'.black.reversed
-        puts 'TODO: check if repos are there'.black.reversed
+        puts 'TODO: implement the target param'
+        puts 'TODO: alter the default view, merge with index.html'
+        puts 'TODO: add check if target exists'
+        puts 'TODO: use FileUtils as much as possible'
+        puts 'TODO: check if repos are there'
         global_opts = Trollop::options do
           version = "Carb v#{Carb::VERSION}"
           banner <<-EOS

@@ -21,7 +21,6 @@ module Carb
     end
 
     class MainCommand < Clamp::Command
-      Logger::log('TODO: implement the target param', Logger::WARNING)
       Logger::log('TODO: alter the default view, merge with index.html', Logger::WARNING)
       Logger::log('TODO: add check if target exists', Logger::WARNING)
       Logger::log('TODO: use FileUtils as much as possible', Logger::WARNING)

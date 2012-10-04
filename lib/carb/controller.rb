@@ -13,25 +13,25 @@ module Carb
       
       def assemble(type, target)
 
-        # @type = type
-        # @target = target || "."
+        @type = type
+        @target = target || "."
 
-        # set_up()
+        set_up()
 
-        # case @type
-        # when Carb::TYPE_OCTAPLUS
-        #   cook_octaplus()
-        # when Carb::TYPE_BEARDED_OCTO
-        #   cook_bearded_octo()
-        # when Carb::TYPE_ON_FIRE
-        #   cook_on_fire()
-        # end
+        case @type
+        when Carb::TYPE_OCTAPLUS
+          cook_octaplus()
+        when Carb::TYPE_BEARDED_OCTO
+          cook_bearded_octo()
+        when Carb::TYPE_ON_FIRE
+          cook_on_fire()
+        end
 
-        # tear_down()
+        tear_down()
       end
 
       def set_up
-        puts "⚡ Preparing your package, hold on ⚡".blue
+        Logger::log("⚡ Preparing your package, hold on ⚡", Logger::INFO)
 
         # save pwd
         @pwd = Dir.pwd

@@ -1,0 +1,18 @@
+PATH
+  remote: .
+  specs:
+    carb (0.0.1)
+      colored
+      trollop
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colored (1.2)
+    trollop (2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  carb!

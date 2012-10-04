@@ -37,9 +37,7 @@ module Carb
         @pwd = Dir.pwd
 
         # remove previous
-        %x[rm -rf #{Config::TMP_FOLDER}]
-
-        # FileUtils.rm_rf = "#{TMP_FOLDER}"
+        FileUtils.rm_rf = "#{Config::TMP_FOLDER}"
         
         # create tmp folder
         %x[mkdir -p #{Config::TMP_FOLDER}]

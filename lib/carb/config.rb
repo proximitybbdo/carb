@@ -1,5 +1,5 @@
 module Carb
-  class Config
+  module Config
     TYPE_OCTAPLUS = 'octaplus'
     TYPE_BEARDED_OCTO = 'bearded-octo'
     TYPE_ON_FIRE = 'on-fire'

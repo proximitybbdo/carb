@@ -19,11 +19,11 @@ module Carb
         set_up()
 
         case @type
-        when Carb::TYPE_OCTAPLUS
+        when Config::TYPE_OCTAPLUS
           cook_octaplus()
-        when Carb::TYPE_BEARDED_OCTO
+        when Config::TYPE_BEARDED_OCTO
           cook_bearded_octo()
-        when Carb::TYPE_ON_FIRE
+        when Config::TYPE_ON_FIRE
           cook_on_fire()
         end
 
@@ -37,12 +37,12 @@ module Carb
         @pwd = Dir.pwd
 
         # remove previous
-        %x[rm -rf #{Carb::TMP_FOLDER}]
+        %x[rm -rf #{Config::TMP_FOLDER}]
 
         # FileUtils.rm_rf = "#{TMP_FOLDER}"
         
         # create tmp folder
-        %x[mkdir -p #{Carb::TMP_FOLDER}]
+        %x[mkdir -p #{Config::TMP_FOLDER}]
 
         # create some collecting folders
         #
@@ -53,18 +53,18 @@ module Carb
         # %x[mkdir -p #{TMP_FOLDER}/octaplus #{TMP_FOLDER}/bearded #{TMP_FOLDER}/boilerplate]
 
         # and move to the root of them
-        Dir.chdir "#{Carb::TMP_FOLDER}"
+        Dir.chdir "#{Config::TMP_FOLDER}"
       end
 
       def tear_down
         # copy the bundle to the current working directory
-        puts "", "⚡⚡⚡ Et voila! All set in the ./#{@target} folder ⚡⚡⚡ ".green.reversed
         puts ""
+        Logger::log("⚡⚡⚡ Et voila! All set in the ./#{@target} folder ⚡⚡⚡ ", Logger::SUCCESS)
 
         %x[mkdir -p #{@pwd}/#{@target} | cp -R boilerplate/ #{@pwd}/#{@target}]
         
         # clean up
-        # %x[rm -rf #{TMP_FOLDER}]
+        %x[rm -rf #{Config::TMP_FOLDER}]
       end
 
       ##################################
@@ -72,19 +72,19 @@ module Carb
       ##################################
 
       def get_octaplus
-        puts '   ⚡ A bit of Octaplus goodness'
+        Logger::log("   ⚡ A bit of Octaplus goodness", Logger::INFO)
         %x[mkdir -p octaplus]
         %x[curl -L -s https://github.com/proximitybbdo/octaplus/tarball/master | tar xz --strip 1 -C octaplus]
       end
 
       def get_bearded_octo
-        puts '   ⚡ Some bearded-octo seasoning'
+        Logger::log("   ⚡ Some bearded-octo seasoning", Logger::INFO)
         %x[mkdir -p bearded]
         %x[curl -L -s https://github.com/proximitybbdo/bearded-octo/tarball/master | tar xz --strip 1 -C bearded]
       end
 
       def get_moreorless
-        puts '   ⚡ A dash of moreorless'
+        Logger::log("   ⚡ A dash of moreorless", Logger::INFO)
         %x[mkdir -p moreorless]
         %x[curl -L -s https://github.com/rob-bar/moreorless/tarball/master | tar xz --strip 1 -C moreorless]
       end

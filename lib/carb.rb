@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'colored'
 require 'fileutils'
 
 require 'carb/version'

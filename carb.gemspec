@@ -16,6 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Carb::VERSION
   
   gem.add_dependency "trollop"
-  gem.add_dependency "colored"
   gem.add_dependency "fileutils"
 end

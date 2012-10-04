@@ -1,15 +1,17 @@
 PATH
   remote: .
   specs:
-    carb (0.0.1)
-      colored
-      trollop
+    carb (0.0.3)
+      clamp
+      fileutils
 
 GEM
   remote: https://rubygems.org/
   specs:
-    colored (1.2)
-    trollop (2.0)
+    clamp (0.4.0)
+    fileutils (0.7)
+      rmagick (>= 2.13.1)
+    rmagick (2.13.1)
 
 PLATFORMS
   ruby

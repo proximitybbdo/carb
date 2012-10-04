@@ -15,7 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Carb::VERSION
   
-  gem.add_dependency "trollop"
-  gem.add_dependency "thor"
+  gem.add_dependency "clamp"
   gem.add_dependency "fileutils"
 end

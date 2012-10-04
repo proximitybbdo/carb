@@ -12,21 +12,22 @@ module Carb
       ##################################
       
       def assemble(type, target)
-        @type = type
-        @target = target || "."
 
-        set_up()
+        # @type = type
+        # @target = target || "."
 
-        case @type
-        when Carb::TYPE_OCTAPLUS
-          cook_octaplus()
-        when Carb::TYPE_BEARDED_OCTO
-          cook_bearded_octo()
-        when Carb::TYPE_ON_FIRE
-          cook_on_fire()
-        end
+        # set_up()
 
-        tear_down()
+        # case @type
+        # when Carb::TYPE_OCTAPLUS
+        #   cook_octaplus()
+        # when Carb::TYPE_BEARDED_OCTO
+        #   cook_bearded_octo()
+        # when Carb::TYPE_ON_FIRE
+        #   cook_on_fire()
+        # end
+
+        # tear_down()
       end
 
       def set_up

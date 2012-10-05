@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["jeroenbourgois@gmail.com"]
   gem.description   = %q{Boost the start of a Proximity BBDO Octaplus framework}
   gem.summary       = %q{Boost the start of a Proximity BBDO Octaplus framework}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/proximitybbdo/carb"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

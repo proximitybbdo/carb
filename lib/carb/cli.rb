@@ -1,8 +1,8 @@
-require 'carb'
+require "clamp/command"
 
-require 'carb/config'
-require 'carb/logger'
-require 'carb/controller'
+require "carb/config"
+require "carb/controller"
+require "carb/logger"
 
 module Carb
   module CLI
@@ -21,16 +21,15 @@ module Carb
     end
 
     class MainCommand < Clamp::Command
-      Logger::log('TODO: alter the default view, merge with index.html', Logger::WARNING)
-      Logger::log('TODO: add check if target exists', Logger::WARNING)
-      Logger::log('TODO: check if repos are there', Logger::WARNING)
-
-      puts ''
-
       subcommand "install", "Install a new project", InstallCommand
     end
 
     def self.run(*a)
+      Logger::log('TODO: alter the default view, merge with index.html', Logger::WARNING)
+      Logger::log('TODO: add check if target exists', Logger::WARNING)
+      Logger::log('TODO: check if repos are there', Logger::WARNING)
+      puts ''
+
       MainCommand.run(*a)
     end
   end

@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
-require 'carb'
+
+require 'fileutils'
 
 module Carb
   class Controller

@@ -7,6 +7,13 @@ and deliver a folder ready to start developing.
 
     gem install carb
 
+### RMagick and OSX ###
+For all file/dir related tasks, the gem relies on FileUtils, which itself relies on the RMagick gem. If you are on OSX, and having trouble, please try to install RMagic:
+
+- through (homebrew)[http://mxcl.github.com/homebrew/], just run 
+  `$ brew update | brew install imagemagick`
+- by using [this great script](https://github.com/maddox/magick-installer)
+
 # Usage #
 
     $ carb create TYPE TARGET_FOLDER

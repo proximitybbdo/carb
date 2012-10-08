@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Carb::VERSION
   
+  gem.required_ruby_version = '>= 1.9'
+  
   gem.add_dependency "clamp"
   gem.add_dependency "fileutils"
 

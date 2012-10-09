@@ -9,12 +9,23 @@ module Carb
   module CLI
 
     class InstallCommand < Clamp::Command
-      parameter "TYPE", "The type of project, being one of: octaplus, bearded-octo, on-fire" do |s|
+      parameter "TYPE", "Type of project, one of:
+------------------------
+
+octaplus        a clean fuelphp installation, 
+                with no frontend classes merged
+
+bearded-octo    frontend only, merges our frontend framework
+                with the moreorless less package
+
+on-fire         [recommended] combo of octaplus and bearded-octo
+
+" do |s|
         raise ArgumentError.new('Not a correct project type.') unless Carb::Config::PROJECT_TYPES.include?(s)
         s # return the actual value
       end
 
-      parameter "[TARGET]", "The target folder", :default => "."
+      parameter "[TARGET]", "target folder", :default => "."
 
       def execute
         Carb::Controller.assemble(type, target)
@@ -22,7 +33,7 @@ module Carb
     end
 
     class MainCommand < Clamp::Command
-      option "--version", :flag, "show version" do
+      option ["--version", "-v"], :flag, "show version" do
         puts "Carb #{Carb::VERSION}"
         exit(0)
       end

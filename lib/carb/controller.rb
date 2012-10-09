@@ -6,33 +6,57 @@ module Carb
   class Controller
     class << self
 
-      type, pwd, target = '', '', ''
+      type, pwd, target, force = '', '', '', false
 
       ##################################
       # the chef
       ##################################
       
-      def assemble(type, target)
+      def assemble(type, target, force)
 
         @type = type
         @target = target || "."
+        @force = force || false
 
-        set_up()
+        if check_target() == true
+          set_up()
 
-        case @type
-        when Config::TYPE_OCTAPLUS
-          cook_octaplus()
-        when Config::TYPE_BEARDED_OCTO
-          cook_bearded_octo()
-        when Config::TYPE_ON_FIRE
-          cook_on_fire()
+          case @type
+          when Config::TYPE_OCTAPLUS
+            cook_octaplus()
+          when Config::TYPE_BEARDED_OCTO
+            cook_bearded_octo()
+          when Config::TYPE_ON_FIRE
+            cook_on_fire()
+          end
+
+          tear_down()
+        else
+          exit(1)
+        end
+      end
+
+      def check_target()
+        # check if target exists, if it does and
+        # force is false, stop right here
+        if File.directory?(@target)
+          if @force
+            FileUtils.rm_rf(Dir.glob("#{@target}/*")) 
+            return true
+          else
+            Logger::log("⚡ Target folder exists, use --force | -f to overwrite ⚡", Logger::ERROR)
+            return false
+          end
         end
 
-        tear_down()
+        return true
       end
 
       def set_up
         Logger::log("⚡ Preparing your package, hold on ⚡", Logger::INFO)
+
+        # clean up if the tear down left some crappers
+        FileUtils.remove_dir "#{Config::TMP_FOLDER}", :force => true
 
         # save pwd
         @pwd = Dir.pwd
@@ -53,7 +77,7 @@ module Carb
         Logger::log("⚡⚡⚡ Et voila! All set in the ./#{@target} folder ⚡⚡⚡ ", Logger::SUCCESS)
 
         # clean up
-        # FileUtils.remove_dir "#{Config::TMP_FOLDER}", :force => true
+        FileUtils.remove_dir "#{Config::TMP_FOLDER}", :force => true
       end
 
       ##################################
@@ -95,17 +119,25 @@ module Carb
         get_bearded_octo()
         get_moreorless()
 
-        FileUtils.remove_dir "#{Config::DIR_OCTAPLUS}/assets"
         FileUtils.mkdir_p "#{Config::DIR_COOKPOT}/assets"
 
-        FileUtils.cp_r "#{Config::DIR_BEARDED}/assets/.", "#{Config::DIR_COOKPOT}/assets"
+        FileUtils.cp_r "#{Config::DIR_BEARDED}/.", "#{Config::DIR_COOKPOT}/"
         FileUtils.remove_dir "#{Config::DIR_MOREORLESS}/tests"
         FileUtils.cp_r "#{Config::DIR_MOREORLESS}/.", "#{Config::DIR_COOKPOT}/assets/css"
       end
 
       def cook_on_fire
         get_octaplus()
-        cook_bearded_octo()
+        get_bearded_octo()
+        get_moreorless()
+
+        FileUtils.mkdir_p "#{Config::DIR_COOKPOT}/assets"
+
+        FileUtils.cp_r "#{Config::DIR_BEARDED}/assets", "#{Config::DIR_COOKPOT}/"
+        FileUtils.remove_dir "#{Config::DIR_MOREORLESS}/tests"
+        FileUtils.cp_r "#{Config::DIR_MOREORLESS}/.", "#{Config::DIR_COOKPOT}/assets/css"
+
+        FileUtils.remove_dir "#{Config::DIR_OCTAPLUS}/assets"
 
         FileUtils.cp_r "#{Config::DIR_OCTAPLUS}/.", "#{Config::DIR_COOKPOT}"
         FileUtils.cp_r "#{Config::DIR_BEARDED}/index.html", "#{Config::DIR_COOKPOT}/fuel/app/views/welcome"

@@ -27,8 +27,10 @@ on-fire         [recommended] combo of octaplus and bearded-octo
 
       parameter "[TARGET]", "target folder", :default => "."
 
+      option ["--force", "-f"], :flag, "force overwrite of the target folder if it exists"
+
       def execute
-        Carb::Controller.assemble(type, target)
+        Carb::Controller.assemble(type, target, force?)
       end
     end
 

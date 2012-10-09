@@ -3,6 +3,7 @@ require "clamp/command"
 require "carb/config"
 require "carb/controller"
 require "carb/logger"
+require "carb/version"
 
 module Carb
   module CLI
@@ -21,6 +22,11 @@ module Carb
     end
 
     class MainCommand < Clamp::Command
+      option "--version", :flag, "show version" do
+        puts "Carb #{Carb::VERSION}"
+        exit(0)
+      end
+
       subcommand "install", "Install a new project", InstallCommand
     end
 

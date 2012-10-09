@@ -45,7 +45,6 @@ on-fire         [recommended] combo of octaplus and bearded-octo
 
     def self.run(*a)
       Logger::log('TODO: alter the default view, merge with index.html', Logger::WARNING)
-      Logger::log('TODO: add check if target exists', Logger::WARNING)
       Logger::log('TODO: check if repos are there', Logger::WARNING)
       puts ''
 

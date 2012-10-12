@@ -88,7 +88,7 @@ module Carb
         Logger::log("   ⚡ A bit of Octaplus goodness", Logger::INFO)
 
         FileUtils.mkdir_p "#{Config::DIR_OCTAPLUS}"
-        %x[curl -L -s https://github.com/proximitybbdo/octaplus/tarball/master | tar xz --strip 1 -C octaplus]
+        %x[curl -L -s https://github.com/proximitybbdo/engine/tarball/master | tar xz --strip 1 -C octaplus]
       end
 
       def get_bearded_octo

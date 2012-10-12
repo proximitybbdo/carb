@@ -21,5 +21,4 @@ Gem::Specification.new do |gem|
   gem.add_dependency "fileutils"
 
   gem.add_development_dependency "rspec"
-  gem.add_development_dependency "stringio"
 end
